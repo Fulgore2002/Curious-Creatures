@@ -5,12 +5,22 @@ public class Playercontroller : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
     public Transform groundCheck;
-    public float groundCheckRadius = 0.2f;
+    public Transform wallCheckLeft;
+    public Transform wallCheckRight;
+    public float checkRadius = 0.2f;
     public LayerMask groundLayer;
     public float coyoteTime = 0.2f;
+    public float wallSlideSpeed = 1.5f;
 
     private Rigidbody2D rb;
     private float coyoteTimeCounter;
+    private bool isGrounded;
+    private bool isTouchingWall;
+    private bool isWallSliding;
+    public float wallJumpForceX = 8f;
+    public float wallJumpForceY = 12f;
+    private bool isWallJumping;
+    private float wallJumpDuration = 0.2f;
 
     void Start()
     {
@@ -19,28 +29,53 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-        // Move left/right using joystick
         float move = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
 
-        // Check if grounded
-        bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        // Disable horizontal input briefly after wall jump
+        if (!isWallJumping)
+            rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
 
-        // Update coyote time counter
+        // Ground check
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+
+        // Coyote time
         if (isGrounded)
-        {
             coyoteTimeCounter = coyoteTime;
-        }
         else
-        {
             coyoteTimeCounter -= Time.deltaTime;
-        }
 
-        // Jump when "A" button is pressed and within coyote time
-        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f)
+        // Wall check
+        bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, groundLayer);
+        bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, groundLayer);
+        isTouchingWall = touchingLeft || touchingRight;
+
+        // Wall sliding
+        isWallSliding = isTouchingWall && !isGrounded && rb.linearVelocity.y < 0;
+
+        if (isWallSliding)
+            rb.linearVelocity = new Vector2(0, Mathf.Clamp(rb.linearVelocity.y, -wallSlideSpeed, float.MaxValue));
+
+        // Jump
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            coyoteTimeCounter = 0f; // prevent double jump
+            if (isWallSliding)
+            {
+                // Wall jump direction
+                float direction = touchingLeft ? 1 : -1;
+                rb.linearVelocity = new Vector2(direction * wallJumpForceX, wallJumpForceY);
+                isWallJumping = true;
+                Invoke(nameof(ResetWallJump), wallJumpDuration);
+            }
+            else if (coyoteTimeCounter > 0f)
+            {
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                coyoteTimeCounter = 0f;
+            }
         }
+    }
+
+    void ResetWallJump()
+    {
+        isWallJumping = false;
     }
 }
