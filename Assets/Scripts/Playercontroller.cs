@@ -30,7 +30,7 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-        float move = Input.GetAxis("Horizontal");
+        float move = Input.GetAxisRaw("Horizontal"); // Raw for clean directional input
 
         // Disable horizontal input briefly after wall jump
         if (!isWallJumping)
@@ -55,8 +55,10 @@ public class Playercontroller : MonoBehaviour
         bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, groundLayer);
         isTouchingWall = touchingLeft || touchingRight;
 
-        // Wall sliding
-        isWallSliding = isTouchingWall && !isGrounded && rb.linearVelocity.y < 0;
+        // Wall sliding only if pressing toward the wall
+        bool pressingTowardLeft = touchingLeft && move < 0;
+        bool pressingTowardRight = touchingRight && move > 0;
+        isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
 
         if (isWallSliding)
         {
