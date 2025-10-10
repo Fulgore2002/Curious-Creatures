@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   target: {fileID: 1386710950}
   tilemap: {fileID: 1274604174}
-  smoothSpeed: 2
+  smoothSpeed: 0.125
 --- !u!1 &651037422
 GameObject:
   m_ObjectHideFlags: 0
