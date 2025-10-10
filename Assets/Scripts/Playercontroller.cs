@@ -11,16 +11,17 @@ public class Playercontroller : MonoBehaviour
     public LayerMask groundLayer;
     public float coyoteTime = 0.2f;
     public float wallSlideSpeed = 1.5f;
+    public float wallJumpForceX = 8f;
+    public float wallJumpForceY = 12f;
+    private float wallJumpDuration = 0.2f;
 
     private Rigidbody2D rb;
     private float coyoteTimeCounter;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
-    public float wallJumpForceX = 8f;
-    public float wallJumpForceY = 12f;
     private bool isWallJumping;
-    private float wallJumpDuration = 0.2f;
+    private bool hasJumped;
 
     void Start()
     {
@@ -38,11 +39,16 @@ public class Playercontroller : MonoBehaviour
         // Ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
-        // Coyote time
+        // Coyote time + jump reset
         if (isGrounded)
+        {
             coyoteTimeCounter = coyoteTime;
+            hasJumped = false;
+        }
         else
+        {
             coyoteTimeCounter -= Time.deltaTime;
+        }
 
         // Wall check
         bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, groundLayer);
@@ -53,22 +59,25 @@ public class Playercontroller : MonoBehaviour
         isWallSliding = isTouchingWall && !isGrounded && rb.linearVelocity.y < 0;
 
         if (isWallSliding)
+        {
             rb.linearVelocity = new Vector2(0, Mathf.Clamp(rb.linearVelocity.y, -wallSlideSpeed, float.MaxValue));
+        }
 
-        // Jump
-        if (Input.GetButtonDown("Jump"))
+        // Jump input
+        if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space))
         {
             if (isWallSliding)
             {
-                // Wall jump direction
                 float direction = touchingLeft ? 1 : -1;
                 rb.linearVelocity = new Vector2(direction * wallJumpForceX, wallJumpForceY);
                 isWallJumping = true;
+                hasJumped = true;
                 Invoke(nameof(ResetWallJump), wallJumpDuration);
             }
-            else if (coyoteTimeCounter > 0f)
+            else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
             {
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                hasJumped = true;
                 coyoteTimeCounter = 0f;
             }
         }
