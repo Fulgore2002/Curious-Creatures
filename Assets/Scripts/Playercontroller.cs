@@ -23,6 +23,10 @@ public class Playercontroller : MonoBehaviour
     private bool isWallJumping;
     private bool hasJumped;
 
+    private bool jumpBuffered;     // buffer jump input so it triggers cleanly
+    private float jumpBufferTime = 0.1f;
+    private float jumpBufferCounter;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,40 +36,51 @@ public class Playercontroller : MonoBehaviour
     {
         float move = Input.GetAxisRaw("Horizontal");
 
-        // Ground check
+        // --- Ground Check ---
+        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
+        // --- Coyote Time ---
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
-            hasJumped = false;
+            if (!wasGrounded) hasJumped = false; // only reset when you newly land
         }
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        // Wall check
+        // --- Wall Check ---
         bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, groundLayer);
         bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, groundLayer);
         isTouchingWall = touchingLeft || touchingRight;
 
-        // Wall sliding only if pressing toward the wall
+        // --- Wall Sliding ---
         bool pressingTowardLeft = touchingLeft && move < 0;
         bool pressingTowardRight = touchingRight && move > 0;
         isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
 
-        // ✅ Smooth movement (prevent sticking but still allow gentle sliding)
+        // --- Buffered Jump Input ---
+        if (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        // --- Movement ---
         if (!isWallJumping)
         {
-            // If pushing into a wall, reduce movement influence (don’t set to 0)
             if ((touchingLeft && move < 0) || (touchingRight && move > 0))
-                move *= 0.2f; // Keeps slight push without sticking
+                move *= 0.2f;
 
             rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
         }
 
-        // ✅ Wall sliding with a slight push away
+        // --- Wall Slide ---
         if (isWallSliding)
         {
             float pushDirection = touchingLeft ? 1f : -1f;
@@ -73,10 +88,8 @@ public class Playercontroller : MonoBehaviour
             rb.linearVelocity = new Vector2(pushDirection * 0.5f, slideY);
         }
 
-        // Jump input
-        bool jumpPressed = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space);
-
-        if (jumpPressed)
+        // --- Jump ---
+        if (jumpBufferCounter > 0f) // if player pressed jump recently
         {
             if (isWallSliding)
             {
@@ -84,6 +97,7 @@ public class Playercontroller : MonoBehaviour
                 rb.linearVelocity = new Vector2(direction * wallJumpForceX, wallJumpForceY);
                 isWallJumping = true;
                 hasJumped = true;
+                jumpBufferCounter = 0f;
                 Invoke(nameof(ResetWallJump), wallJumpDuration);
             }
             else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
@@ -92,6 +106,7 @@ public class Playercontroller : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 hasJumped = true;
                 coyoteTimeCounter = 0f;
+                jumpBufferCounter = 0f;
             }
         }
     }
