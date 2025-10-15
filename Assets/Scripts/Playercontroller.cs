@@ -23,9 +23,11 @@ public class Playercontroller : MonoBehaviour
     private bool isWallJumping;
     private bool hasJumped;
 
-    private bool jumpBuffered;     // buffer jump input so it triggers cleanly
+    private bool jumpBuffered;
     private float jumpBufferTime = 0.1f;
     private float jumpBufferCounter;
+
+    private int lastWallDir = 0; // -1 = left wall, 1 = right wall, 0 = none
 
     void Start()
     {
@@ -44,7 +46,11 @@ public class Playercontroller : MonoBehaviour
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
-            if (!wasGrounded) hasJumped = false; // only reset when you newly land
+            if (!wasGrounded)
+            {
+                hasJumped = false;
+                lastWallDir = 0; // reset when grounded
+            }
         }
         else
         {
@@ -89,17 +95,26 @@ public class Playercontroller : MonoBehaviour
         }
 
         // --- Jump ---
-        if (jumpBufferCounter > 0f) // if player pressed jump recently
+        if (jumpBufferCounter > 0f)
         {
+            // Wall Jump (requires switching walls)
             if (isWallSliding)
             {
-                float direction = touchingLeft ? 1 : -1;
-                rb.linearVelocity = new Vector2(direction * wallJumpForceX, wallJumpForceY);
-                isWallJumping = true;
-                hasJumped = true;
-                jumpBufferCounter = 0f;
-                Invoke(nameof(ResetWallJump), wallJumpDuration);
+                int currentWallDir = touchingLeft ? -1 : (touchingRight ? 1 : 0);
+
+                // Only allow jump if it's a different wall than last time
+                if (currentWallDir != 0 && currentWallDir != lastWallDir)
+                {
+                    float direction = currentWallDir == -1 ? 1 : -1;
+                    rb.linearVelocity = new Vector2(direction * wallJumpForceX, wallJumpForceY);
+                    isWallJumping = true;
+                    hasJumped = true;
+                    lastWallDir = currentWallDir;
+                    jumpBufferCounter = 0f;
+                    Invoke(nameof(ResetWallJump), wallJumpDuration);
+                }
             }
+            // Normal jump
             else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
