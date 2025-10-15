@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Playercontroller : MonoBehaviour
 {
@@ -30,16 +30,11 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-        float move = Input.GetAxisRaw("Horizontal"); // Raw for clean directional input
-
-        // Disable horizontal input briefly after wall jump
-        if (!isWallJumping)
-            rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
+        float move = Input.GetAxisRaw("Horizontal");
 
         // Ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
-        // Coyote time + jump reset
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
@@ -60,9 +55,22 @@ public class Playercontroller : MonoBehaviour
         bool pressingTowardRight = touchingRight && move > 0;
         isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
 
+        // ✅ Smooth movement (prevent sticking but still allow gentle sliding)
+        if (!isWallJumping)
+        {
+            // If pushing into a wall, reduce movement influence (don’t set to 0)
+            if ((touchingLeft && move < 0) || (touchingRight && move > 0))
+                move *= 0.2f; // Keeps slight push without sticking
+
+            rb.linearVelocity = new Vector2(move * moveSpeed, rb.linearVelocity.y);
+        }
+
+        // ✅ Wall sliding with a slight push away
         if (isWallSliding)
         {
-            rb.linearVelocity = new Vector2(0, Mathf.Clamp(rb.linearVelocity.y, -wallSlideSpeed, float.MaxValue));
+            float pushDirection = touchingLeft ? 1f : -1f;
+            float slideY = Mathf.Clamp(rb.linearVelocity.y, -wallSlideSpeed, float.MaxValue);
+            rb.linearVelocity = new Vector2(pushDirection * 0.5f, slideY);
         }
 
         // Jump input
@@ -80,7 +88,7 @@ public class Playercontroller : MonoBehaviour
             }
             else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // Reset vertical velocity
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 hasJumped = true;
                 coyoteTimeCounter = 0f;
