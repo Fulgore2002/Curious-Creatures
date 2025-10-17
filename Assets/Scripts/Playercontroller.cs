@@ -21,7 +21,6 @@ public class Playercontroller : MonoBehaviour
     public Transform wallCheckRight;
     public float checkRadius = 0.2f;
     public LayerMask groundLayer;
-    public float wallSlideStartSpeed = 0.5f;
     public float wallSlideMaxSpeed = 3f;
     public float wallSlideAcceleration = 4f;
     public float wallJumpForceX = 10f;
@@ -31,13 +30,13 @@ public class Playercontroller : MonoBehaviour
     private Rigidbody2D rb;
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
-    private float currentSlideSpeed;
 
     private bool isGrounded;
     private bool isWallSliding;
     private bool isWallJumping;
     private bool hasJumped;
     private int lastWallDir = 0;
+    private float currentSlideSpeed;
 
     void Start()
     {
@@ -74,25 +73,30 @@ public class Playercontroller : MonoBehaviour
         // --- Wall Check ---
         bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, groundLayer);
         bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, groundLayer);
-
         bool pressingTowardLeft = touchingLeft && moveInput < 0;
         bool pressingTowardRight = touchingRight && moveInput > 0;
-
         bool isTouchingWall = touchingLeft || touchingRight;
         isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
 
-        // --- Movement (with smooth acceleration) ---
-        float targetSpeed = moveInput * moveSpeed;
-        float accelRate = isGrounded
-            ? (Mathf.Abs(targetSpeed) > 0.01f ? acceleration : deceleration)
-            : (Mathf.Abs(targetSpeed) > 0.01f ? airAcceleration : airDeceleration);
-
-        float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelRate * Time.deltaTime);
-
+        // --- Movement (slope-friendly, no jitter) ---
         if (!isWallJumping)
-            rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
+        {
+            float targetSpeed = moveInput * moveSpeed;
+            float accelRate = isGrounded
+                ? (Mathf.Abs(targetSpeed) > 0.01f ? acceleration : deceleration)
+                : (Mathf.Abs(targetSpeed) > 0.01f ? airAcceleration : airDeceleration);
 
-        // --- Wall Sliding (soft acceleration downward) ---
+            float newVelocityX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelRate * Time.deltaTime);
+            rb.linearVelocity = new Vector2(newVelocityX, rb.linearVelocity.y);
+        }
+
+        // --- Gentle ground stick (so slopes don’t cause jitter) ---
+        if (isGrounded && rb.linearVelocity.y <= 0f)
+        {
+            rb.AddForce(Vector2.down * 2f, ForceMode2D.Force); // reduced downward force — enough to stabilize but not prevent slope motion
+        }
+
+        // --- Wall Sliding ---
         if (isWallSliding)
         {
             float pushDirection = touchingLeft ? 1f : -1f;
@@ -101,7 +105,7 @@ public class Playercontroller : MonoBehaviour
         }
         else
         {
-            currentSlideSpeed = wallSlideStartSpeed;
+            currentSlideSpeed = 0f;
         }
 
         // --- Jump ---
@@ -132,7 +136,7 @@ public class Playercontroller : MonoBehaviour
             }
         }
 
-        // --- Variable Jump Height (Ori-like control) ---
+        // --- Variable Jump Height (Ori-like floaty control) ---
         if (jumpReleased && rb.linearVelocity.y > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
