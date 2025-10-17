@@ -2185,10 +2185,10 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2196,14 +2196,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2344,6 +2336,20 @@ MonoBehaviour:
   target: {fileID: 1386710950}
   tilemap: {fileID: 1274604174}
   smoothSpeed: 0.125
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1 &637135996
 GameObject:
   m_ObjectHideFlags: 0
@@ -13333,7 +13339,7 @@ TilemapCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 40d30cef179b947479415c4dae27d49f, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13647,7 +13653,6 @@ GameObject:
   - component: {fileID: 1386710952}
   - component: {fileID: 1386710951}
   - component: {fileID: 1386710953}
-  - component: {fileID: 1386710954}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -13668,14 +13673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Playercontroller
   moveSpeed: 5
-  acceleration: 20
-  airAcceleration: 10
-  deceleration: 25
-  airDeceleration: 15
   jumpForce: 10
-  jumpCutMultiplier: 0.5
-  coyoteTime: 0.2
-  jumpBufferTime: 0.1
   groundCheck: {fileID: 1989184066}
   wallCheckLeft: {fileID: 898335742}
   wallCheckRight: {fileID: 651037423}
@@ -13683,9 +13681,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  wallSlideStartSpeed: 0.5
-  wallSlideMaxSpeed: 3
-  wallSlideAcceleration: 4
+  coyoteTime: 0.2
+  wallSlideSpeed: 1.5
   wallJumpForceX: 8
   wallJumpForceY: 12
 --- !u!50 &1386710946
@@ -13704,7 +13701,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 3b4e730b6b0a88f4f933a641f8b82695, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13713,7 +13710,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!23 &1386710948
 MeshRenderer:
@@ -13900,20 +13897,8 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1.05}
+  m_Size: {x: 1, y: 0.99999994}
   m_Direction: 0
---- !u!114 &1386710954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386710944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 421b22dcc0f4a2643b572c87558093e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneReloader
 --- !u!1 &1393913937
 GameObject:
   m_ObjectHideFlags: 0
