@@ -1,8 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Playercontroller : MonoBehaviour
 {
+    [Header("General Stats")]
+    public int health = 10;
+    public int maxHealth = 10;
+    public int mana = 10;
+    public int maxMana = 10;
+
     [Header("Movement")]
     public float moveSpeed = 8f;
     public float acceleration = 15f;
@@ -25,6 +34,13 @@ public class Playercontroller : MonoBehaviour
     public float wallJumpForceY = 14f;
     private float wallJumpDuration = 0.25f;
 
+    [Header("Tilemaps")]
+    public Tilemap interactionTilemap; // Single Tilemap for all interactable tiles
+    public float damageCooldown = 3f; // Time between taking damage from a tile
+    private float lastDamageTime = 0f;
+    public TileBase[] thornsTiles; // Reference the specific Thorns tile
+    private Dictionary<TileBase, Action> tileActions;
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isWallSliding;
@@ -40,9 +56,60 @@ public class Playercontroller : MonoBehaviour
         rb.gravityScale = 4f;
         rb.freezeRotation = true;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        tileActions = new Dictionary<TileBase, Action>();
+        foreach (TileBase thorn in thornsTiles)
+        {
+            tileActions[thorn] = () => Health(1, false);
+        }
     }
 
     void Update()
+    {
+        MovementController();
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Health(1, true);
+        }
+        DetectTile();
+    }
+
+    void ResetWallJump() => isWallJumping = false;
+
+    private void DetectTile()
+    {
+        Vector3Int cellPosition = interactionTilemap.WorldToCell(transform.position);
+        TileBase tileUnderPlayer = interactionTilemap.GetTile(cellPosition);
+
+        if (tileUnderPlayer == null) return;
+
+        // Check if the tile has an action mapped
+        if (tileActions.ContainsKey(tileUnderPlayer))
+        {
+            // Only apply damage if cooldown passed
+            if (Time.time - lastDamageTime >= damageCooldown)
+            {
+                tileActions[tileUnderPlayer]?.Invoke();
+                lastDamageTime = Time.time;
+            }
+        }
+    }
+
+    void Health(int amount, bool Heal)
+    {
+        if (Heal)
+        {
+            health += amount;
+        }
+        else
+        {
+            health -= amount;
+        }
+        health = Mathf.Clamp(health, 0, maxHealth);
+        UIManager.Instance.SetHealth(health);
+    }
+
+    void MovementController()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
         bool jumpPressed = Input.GetButtonDown("Jump");
@@ -124,6 +191,4 @@ public class Playercontroller : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
     }
-
-    void ResetWallJump() => isWallJumping = false;
 }
