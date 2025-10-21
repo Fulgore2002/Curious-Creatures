@@ -4792,10 +4792,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1733927328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -354.71667, y: -206.20392}
-  m_SizeDelta: {x: 252.2076, y: 45.8559}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 134.28333, y: 41.79608}
+  m_SizeDelta: {x: 252.2076, y: 45.855896}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1132441213
 MonoBehaviour:
@@ -13961,9 +13961,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0872550518bd65d409cb91ed9a2120d4, type: 2}
   - {fileID: 11400000, guid: 751e7d39e2571db4aafbd0d6742fe194, type: 2}
   - {fileID: 11400000, guid: 19baba905d3b34149b558b24943d16d7, type: 2}
-  meshRenderer: {fileID: 1386710948}
-  damageOpacity: 0.75
-  normalOpacity: 1
 --- !u!50 &1386710946
 Rigidbody2D:
   serializedVersion: 5
