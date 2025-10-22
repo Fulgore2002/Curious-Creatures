@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Playercontroller : MonoBehaviour
 {
     [Header("General Stats")]
@@ -18,10 +20,10 @@ public class Playercontroller : MonoBehaviour
     public float airAcceleration = 10f;
 
     [Header("Jump")]
-    public float jumpForce = 14f;        // was 13f
+    public float jumpForce = 14f;
     public float coyoteTime = 0.15f;
     public float jumpBufferTime = 0.1f;
-    public float jumpCutMultiplier = 0.65f; // was 0.5f
+    public float jumpCutMultiplier = 0.65f;
 
     [Header("Wall Jump")]
     public Transform groundCheck;
@@ -35,13 +37,17 @@ public class Playercontroller : MonoBehaviour
     private float wallJumpDuration = 0.25f;
 
     [Header("Tilemaps")]
-    public Tilemap interactionTilemap; // Single Tilemap for all interactable tiles
-    public float damageCooldown = 3f; // Time between taking damage from a tile
+    public Tilemap interactionTilemap;
+    public float damageCooldown = 3f;
     private float lastDamageTime = 0f;
-    public TileBase[] thornsTiles; // Reference the specific Thorns tile
+    public TileBase[] thornsTiles;
     private Dictionary<TileBase, Action> tileActions;
 
+    // --- Private ---
     private Rigidbody2D rb;
+    private Animator anim;
+    private SpriteRenderer spriteRenderer;
+
     private bool isGrounded;
     private bool isWallSliding;
     private bool isWallJumping;
@@ -53,6 +59,9 @@ public class Playercontroller : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         rb.gravityScale = 4f;
         rb.freezeRotation = true;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
@@ -67,10 +76,13 @@ public class Playercontroller : MonoBehaviour
     void Update()
     {
         MovementController();
+        UpdateAnimationStates();
+
         if (Input.GetKeyDown(KeyCode.H))
         {
             Health(1, true);
         }
+
         DetectTile();
     }
 
@@ -83,10 +95,8 @@ public class Playercontroller : MonoBehaviour
 
         if (tileUnderPlayer == null) return;
 
-        // Check if the tile has an action mapped
         if (tileActions.ContainsKey(tileUnderPlayer))
         {
-            // Only apply damage if cooldown passed
             if (Time.time - lastDamageTime >= damageCooldown)
             {
                 tileActions[tileUnderPlayer]?.Invoke();
@@ -97,14 +107,9 @@ public class Playercontroller : MonoBehaviour
 
     void Health(int amount, bool Heal)
     {
-        if (Heal)
-        {
-            health += amount;
-        }
-        else
-        {
-            health -= amount;
-        }
+        if (Heal) health += amount;
+        else health -= amount;
+
         health = Mathf.Clamp(health, 0, maxHealth);
         UIManager.Instance.SetHealth(health);
     }
@@ -147,7 +152,6 @@ public class Playercontroller : MonoBehaviour
             float targetSpeed = moveInput * moveSpeed;
             float accel = isGrounded ? acceleration : airAcceleration;
             float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accel * Time.deltaTime);
-
             rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
         }
 
@@ -190,5 +194,19 @@ public class Playercontroller : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
+
+        // --- Sprite Flip ---
+        if (moveInput > 0)
+            spriteRenderer.flipX = false;
+        else if (moveInput < 0)
+            spriteRenderer.flipX = true;
+    }
+
+    // 🎞️ Handles Animator state changes
+    void UpdateAnimationStates()
+    {
+        float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
+        anim.SetFloat("Speed", horizontalSpeed);
+        anim.SetBool("isGrounded", isGrounded);
     }
 }

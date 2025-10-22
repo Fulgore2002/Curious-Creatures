@@ -3,17 +3,11 @@ guid: 0e3c6469033027e4eafcf1299b0b8b56
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1093073934643142118
-    second: Fang Walking Left In between_0
+      213: -8667804342600795325
+    second: Fang Walking Left 3_0
   - first:
-      213: -2719360153666495816
-    second: Fang Walking Left In between_1
-  - first:
-      213: 3975932567873851123
-    second: Fang Walking Left In between_2
-  - first:
-      213: -7789560633210069015
-    second: Fang Walking Left In between_3
+      213: -8997026847063969244
+    second: Fang Walking Left 3_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -55,10 +49,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 6
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -122,78 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fang Walking Left In between_0
+      name: Fang Walking Left 3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
-        width: 1409
-        height: 2669
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a126b5c3c0f94d0f0800000000000000
-      internalID: -1093073934643142118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fang Walking Left In between_1
-      rect:
-        serializedVersion: 2
-        x: 869
-        y: 2701
-        width: 12
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ba5b581954e24ad0800000000000000
-      internalID: -2719360153666495816
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fang Walking Left In between_2
-      rect:
-        serializedVersion: 2
-        x: 1424
-        y: 2268
-        width: 13
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3fe0707ea995d2730800000000000000
-      internalID: 3975932567873851123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fang Walking Left In between_3
-      rect:
-        serializedVersion: 2
-        x: 1429
-        y: 2227
-        width: 8
+        x: 490
+        y: 1521
+        width: 7
         height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -203,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ef952dffdbe5e390800000000000000
-      internalID: -7789560633210069015
+      spriteID: 34bf0b8dfd5c5b780800000000000000
+      internalID: -8667804342600795325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fang Walking Left 3_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 19
+        width: 798
+        height: 1499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 422791a30c3242380800000000000000
+      internalID: -8997026847063969244
       vertices: []
       indices: 
       edges: []
@@ -213,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fang Walking Left In between_0: -1093073934643142118
-      Fang Walking Left In between_1: -2719360153666495816
-      Fang Walking Left In between_2: 3975932567873851123
-      Fang Walking Left In between_3: -7789560633210069015
+      Fang Walking Left 3_0: -8667804342600795325
+      Fang Walking Left 3_1: -8997026847063969244
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
