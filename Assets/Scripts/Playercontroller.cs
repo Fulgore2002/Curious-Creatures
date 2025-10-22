@@ -202,11 +202,17 @@ public class Playercontroller : MonoBehaviour
             spriteRenderer.flipX = true;
     }
 
-    // 🎞️ Handles Animator state changes
+    // 🎞️ Animation handling
     void UpdateAnimationStates()
     {
         float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
         anim.SetFloat("Speed", horizontalSpeed);
         anim.SetBool("isGrounded", isGrounded);
+
+        // Optional: add airborne trigger for future jump animations
+        if (!isGrounded && rb.linearVelocity.y > 0.1f)
+            anim.SetBool("isJumping", true);
+        else if (isGrounded)
+            anim.SetBool("isJumping", false);
     }
 }
