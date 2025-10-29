@@ -5,8 +5,6 @@ using UnityEngine.Tilemaps;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class Playercontroller : MonoBehaviour
 {
     [Header("General Stats")]
@@ -44,6 +42,12 @@ public class Playercontroller : MonoBehaviour
     public TileBase[] thornsTiles;
     private Dictionary<TileBase, Action> tileActions;
 
+    [Header("Visual (Child Components)")]
+    [Tooltip("Assign the child GameObject that holds the Animator and SpriteRenderer.")]
+    public Transform spriteChild;
+    public Animator childAnimator;
+    public SpriteRenderer childSpriteRenderer;
+
     // --- Private ---
     private Rigidbody2D rb;
     private Animator anim;
@@ -60,8 +64,23 @@ public class Playercontroller : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // ✅ Use explicitly assigned child components if set
+        if (childAnimator != null && childSpriteRenderer != null)
+        {
+            anim = childAnimator;
+            spriteRenderer = childSpriteRenderer;
+        }
+        else if (spriteChild != null)
+        {
+            anim = spriteChild.GetComponent<Animator>();
+            spriteRenderer = spriteChild.GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            anim = GetComponent<Animator>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
         rb.gravityScale = 4f;
         rb.freezeRotation = true;
@@ -105,8 +124,15 @@ public class Playercontroller : MonoBehaviour
 
     private void DetectTile()
     {
+<<<<<<< Updated upstream
         Vector3Int cellPosition = interactionTilemaps[0].WorldToCell(transform.position);
         TileBase tileUnderPlayer = interactionTilemaps[0].GetTile(cellPosition);
+=======
+        if (interactionTilemap == null) return;
+
+        Vector3Int cellPosition = interactionTilemap.WorldToCell(transform.position);
+        TileBase tileUnderPlayer = interactionTilemap.GetTile(cellPosition);
+>>>>>>> Stashed changes
 
         if (tileUnderPlayer == null) return;
 
@@ -136,9 +162,13 @@ public class Playercontroller : MonoBehaviour
         bool jumpReleased = Input.GetButtonUp("Jump");
 
         // --- Ground Check ---
+<<<<<<< Updated upstream
         bool wasGrounded = isGrounded;
         isGrounded = DetectGround();
 
+=======
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+>>>>>>> Stashed changes
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
@@ -211,21 +241,25 @@ public class Playercontroller : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
 
-        // --- Sprite Flip ---
-        if (moveInput > 0)
-            spriteRenderer.flipX = false;
-        else if (moveInput < 0)
-            spriteRenderer.flipX = true;
+        // ✅ Flip child sprite only — keeps collider position fixed
+        if (spriteChild != null)
+        {
+            Vector3 scale = spriteChild.localScale;
+            if (moveInput > 0) scale.x = Mathf.Abs(scale.x);
+            else if (moveInput < 0) scale.x = -Mathf.Abs(scale.x);
+            spriteChild.localScale = scale;
+        }
     }
 
     // 🎞️ Animation handling
     void UpdateAnimationStates()
     {
+        if (anim == null) return;
+
         float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
         anim.SetFloat("Speed", horizontalSpeed);
         anim.SetBool("isGrounded", isGrounded);
 
-        // Optional: add airborne trigger for future jump animations
         if (!isGrounded && rb.linearVelocity.y > 0.1f)
             anim.SetBool("isJumping", true);
         else if (isGrounded)
