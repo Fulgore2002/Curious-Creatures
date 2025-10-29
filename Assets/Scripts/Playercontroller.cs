@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Playercontroller : MonoBehaviour
@@ -29,14 +28,14 @@ public class Playercontroller : MonoBehaviour
     public Transform wallCheckLeft;
     public Transform wallCheckRight;
     public float checkRadius = 0.2f;
-    public LayerMask[] collisionLayers;
+    public LayerMask groundLayer;
     public float wallSlideSpeed = 2f;
     public float wallJumpForceX = 10f;
     public float wallJumpForceY = 14f;
     private float wallJumpDuration = 0.25f;
 
     [Header("Tilemaps")]
-    public Tilemap[] interactionTilemaps;
+    public Tilemap interactionTilemap;
     public float damageCooldown = 3f;
     private float lastDamageTime = 0f;
     public TileBase[] thornsTiles;
@@ -53,7 +52,7 @@ public class Playercontroller : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRenderer;
 
-    private bool isGrounded = false;
+    private bool isGrounded;
     private bool isWallSliding;
     private bool isWallJumping;
     private bool hasJumped;
@@ -108,31 +107,12 @@ public class Playercontroller : MonoBehaviour
 
     void ResetWallJump() => isWallJumping = false;
 
-    bool DetectGround()
-    {
-        bool grounded;
-        foreach (LayerMask layer in collisionLayers)
-        {
-            grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, layer);
-            if(grounded)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private void DetectTile()
     {
-<<<<<<< Updated upstream
-        Vector3Int cellPosition = interactionTilemaps[0].WorldToCell(transform.position);
-        TileBase tileUnderPlayer = interactionTilemaps[0].GetTile(cellPosition);
-=======
         if (interactionTilemap == null) return;
 
         Vector3Int cellPosition = interactionTilemap.WorldToCell(transform.position);
         TileBase tileUnderPlayer = interactionTilemap.GetTile(cellPosition);
->>>>>>> Stashed changes
 
         if (tileUnderPlayer == null) return;
 
@@ -162,13 +142,7 @@ public class Playercontroller : MonoBehaviour
         bool jumpReleased = Input.GetButtonUp("Jump");
 
         // --- Ground Check ---
-<<<<<<< Updated upstream
-        bool wasGrounded = isGrounded;
-        isGrounded = DetectGround();
-
-=======
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
->>>>>>> Stashed changes
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
@@ -181,8 +155,8 @@ public class Playercontroller : MonoBehaviour
         }
 
         // --- Wall Check ---
-        bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, collisionLayers[0]);
-        bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, collisionLayers[0]);
+        bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, groundLayer);
+        bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, groundLayer);
         bool pressingTowardLeft = touchingLeft && moveInput < 0;
         bool pressingTowardRight = touchingRight && moveInput > 0;
         isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
@@ -226,7 +200,6 @@ public class Playercontroller : MonoBehaviour
             // Ground Jump
             else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
             {
-                Debug.Log("Jump!");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 hasJumped = true;
