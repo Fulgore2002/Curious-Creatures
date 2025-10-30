@@ -57,6 +57,11 @@ public class Playercontroller : MonoBehaviour
     private float jumpBufferCounter;
     private int lastWallDir = 0;
 
+    private float moveInput;
+    private float downInput;
+    private bool jumpPressed;
+    private bool jumpReleased;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -89,18 +94,25 @@ public class Playercontroller : MonoBehaviour
 
     void ResetWallJump() => isWallJumping = false;
 
+    /// <summary>
+    /// Checks for ground below player
+    /// </summary>
+    /// <returns>Returns True if there's ground</returns>
     bool DetectGround()
-    {
-        bool grounded;
+    {        
+        bool grounded = false;
         foreach (LayerMask layer in collisionLayers)
         {
-            grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, layer);
-            if(grounded)
+            if (!Physics2D.GetIgnoreLayerCollision(LayerMask.NameToLayer("Player"), (int)Mathf.Log(layer.value, 2)))
             {
-                return true;
+                grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, layer);
+                if (grounded)
+                {
+                    return grounded;
+                }
             }
         }
-        return false;
+        return grounded;
     }
 
     private void DetectTile()
@@ -131,12 +143,12 @@ public class Playercontroller : MonoBehaviour
 
     void MovementController()
     {
-        float moveInput = Input.GetAxisRaw("Horizontal");
-        bool jumpPressed = Input.GetButtonDown("Jump");
-        bool jumpReleased = Input.GetButtonUp("Jump");
+        moveInput = Input.GetAxisRaw("Horizontal");
+        downInput = Input.GetAxisRaw("Vertical");
+        jumpPressed = Input.GetButtonDown("Jump");
+        jumpReleased = Input.GetButtonUp("Jump");
 
         // --- Ground Check ---
-        bool wasGrounded = isGrounded;
         isGrounded = DetectGround();
 
         if (isGrounded)
@@ -193,10 +205,13 @@ public class Playercontroller : MonoBehaviour
                     Invoke(nameof(ResetWallJump), wallJumpDuration);
                 }
             }
+            else if (Physics2D.OverlapCircle(groundCheck.position, checkRadius, collisionLayers[1]) && downInput < 0 && !hasJumped)
+            {
+                DropThruPlatform();
+            }
             // Ground Jump
             else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
             {
-                Debug.Log("Jump!");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 hasJumped = true;
@@ -230,5 +245,14 @@ public class Playercontroller : MonoBehaviour
             anim.SetBool("isJumping", true);
         else if (isGrounded)
             anim.SetBool("isJumping", false);
+    }
+
+    /// <summary>
+    /// If the player is on a platform and presses jump holding down, then fall through the platform
+    /// </summary>
+    void DropThruPlatform()
+    {        
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platforms"), true);
+        hasJumped = true;
     }
 }
