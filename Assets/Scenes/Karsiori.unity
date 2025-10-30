@@ -1846,6 +1846,7 @@ GameObject:
   - component: {fileID: 1080385721}
   - component: {fileID: 1080385722}
   - component: {fileID: 1080385723}
+  - component: {fileID: 1080385724}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -1948,6 +1949,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1080385724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080385720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af00ae40d6806841a6c4d315883b5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFlashOnThorns
+  spriteRenderer: {fileID: 0}
+  tilemap: {fileID: 1274604174}
+  thornTile: {fileID: 11400000, guid: f6c722d7691fdbc4f9eec33df4ed3ada, type: 2}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
 --- !u!1 &1132441211
 GameObject:
   m_ObjectHideFlags: 0
@@ -7700,8 +7718,8 @@ Tilemap:
   - first: {x: 4, y: 23, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 31
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -9295,15 +9313,15 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: a91025a016b09bb4eaa866545fa186b6, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 4c9b4e07958880544a5fa9432bf42047, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: f6c722d7691fdbc4f9eec33df4ed3ada, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 6954009a9f2d2dd458e0e13300f6a6cc, type: 2}
@@ -9372,7 +9390,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: -845128110, guid: 1373e1013c3de934d8fa62a8d0262ab4, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -7877660333974039126, guid: 1373e1013c3de934d8fa62a8d0262ab4, type: 3}
@@ -9400,8 +9418,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -583810299, guid: 1373e1013c3de934d8fa62a8d0262ab4, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 664308965, guid: edb187149b42bf847ac48b1b7b74b59c, type: 3}
   - m_RefCount: 362
