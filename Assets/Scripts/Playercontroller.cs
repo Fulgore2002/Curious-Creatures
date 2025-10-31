@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Playercontroller : MonoBehaviour
 {
     [Header("General Stats")]
@@ -41,18 +44,12 @@ public class Playercontroller : MonoBehaviour
     public TileBase[] thornsTiles;
     private Dictionary<TileBase, Action> tileActions;
 
-    [Header("Visual (Child Components)")]
-    [Tooltip("Assign the child GameObject that holds the Animator and SpriteRenderer.")]
-    public Transform spriteChild;
-    public Animator childAnimator;
-    public SpriteRenderer childSpriteRenderer;
-
     // --- Private ---
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer spriteRenderer;
 
-    private bool isGrounded;
+    private bool isGrounded = false;
     private bool isWallSliding;
     private bool isWallJumping;
     private bool hasJumped;
@@ -68,23 +65,8 @@ public class Playercontroller : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        // ✅ Use explicitly assigned child components if set
-        if (childAnimator != null && childSpriteRenderer != null)
-        {
-            anim = childAnimator;
-            spriteRenderer = childSpriteRenderer;
-        }
-        else if (spriteChild != null)
-        {
-            anim = spriteChild.GetComponent<Animator>();
-            spriteRenderer = spriteChild.GetComponent<SpriteRenderer>();
-        }
-        else
-        {
-            anim = GetComponent<Animator>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         rb.gravityScale = 4f;
         rb.freezeRotation = true;
@@ -233,6 +215,7 @@ public class Playercontroller : MonoBehaviour
             // Ground Jump
             else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
             {
+                Debug.Log("Jump!");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 hasJumped = true;
@@ -247,25 +230,21 @@ public class Playercontroller : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
 
-        // ✅ Flip child sprite only — keeps collider position fixed
-        if (spriteChild != null)
-        {
-            Vector3 scale = spriteChild.localScale;
-            if (moveInput > 0) scale.x = Mathf.Abs(scale.x);
-            else if (moveInput < 0) scale.x = -Mathf.Abs(scale.x);
-            spriteChild.localScale = scale;
-        }
+        // --- Sprite Flip ---
+        if (moveInput > 0)
+            spriteRenderer.flipX = false;
+        else if (moveInput < 0)
+            spriteRenderer.flipX = true;
     }
 
     // 🎞️ Animation handling
     void UpdateAnimationStates()
     {
-        if (anim == null) return;
-
         float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
         anim.SetFloat("Speed", horizontalSpeed);
         anim.SetBool("isGrounded", isGrounded);
 
+        // Optional: add airborne trigger for future jump animations
         if (!isGrounded && rb.linearVelocity.y > 0.1f)
             anim.SetBool("isJumping", true);
         else if (isGrounded)
