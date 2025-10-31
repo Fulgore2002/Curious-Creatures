@@ -59,7 +59,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4770918120604374812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WallCheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7799,7 +7799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7066480340288492168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'WallCheckLeft '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7830,7 +7830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3633395188693365222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8012,7 +8012,7 @@ GameObject:
   - component: {fileID: 7574538059673035225}
   - component: {fileID: 7440466723165265573}
   - component: {fileID: 2717610940914969478}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8146,7 +8146,7 @@ GameObject:
   - component: {fileID: 8440428273609165606}
   - component: {fileID: 3835792926453290353}
   - component: {fileID: 1951811432678860823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8162,7 +8162,7 @@ Transform:
   m_GameObject: {fileID: 7499930633198158067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 15.15, z: -5}
+  m_LocalPosition: {x: -0.18, y: 19.95, z: -5}
   m_LocalScale: {x: 0.08104791, y: 0.08859245, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

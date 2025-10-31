@@ -225,8 +225,9 @@ public class Playercontroller : MonoBehaviour
                     Invoke(nameof(ResetWallJump), wallJumpDuration);
                 }
             }
-            else if (Physics2D.OverlapCircle(groundCheck.position, checkRadius, collisionLayers[1]) && downInput < 0 && !hasJumped)
+            else if (Physics2D.OverlapCircle(groundCheck.position, checkRadius, collisionLayers[1]) && downInput < 0)
             {
+                Debug.Log("Falling!");
                 DropThruPlatform();
             }
             // Ground Jump
