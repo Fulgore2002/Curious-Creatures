@@ -28,14 +28,14 @@ public class Playercontroller : MonoBehaviour
     public Transform wallCheckLeft;
     public Transform wallCheckRight;
     public float checkRadius = 0.2f;
-    public LayerMask groundLayer;
+    public LayerMask[] collisionLayers;
     public float wallSlideSpeed = 2f;
     public float wallJumpForceX = 10f;
     public float wallJumpForceY = 14f;
     private float wallJumpDuration = 0.25f;
 
     [Header("Tilemaps")]
-    public Tilemap interactionTilemap;
+    public Tilemap[] interactionTilemaps;
     public float damageCooldown = 3f;
     private float lastDamageTime = 0f;
     public TileBase[] thornsTiles;
@@ -135,10 +135,10 @@ public class Playercontroller : MonoBehaviour
 
     private void DetectTile()
     {
-        if (interactionTilemap == null) return;
+        if (interactionTilemaps[0] == null) return;
 
-        Vector3Int cellPosition = interactionTilemap.WorldToCell(transform.position);
-        TileBase tileUnderPlayer = interactionTilemap.GetTile(cellPosition);
+        Vector3Int cellPosition = interactionTilemaps[0].WorldToCell(transform.position);
+        TileBase tileUnderPlayer = interactionTilemaps[0].GetTile(cellPosition);
 
         if (tileUnderPlayer == null) return;
 
@@ -183,8 +183,8 @@ public class Playercontroller : MonoBehaviour
         }
 
         // --- Wall Check ---
-        bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, groundLayer);
-        bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, groundLayer);
+        bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, collisionLayers[0]);
+        bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, collisionLayers[0]);
         bool pressingTowardLeft = touchingLeft && moveInput < 0;
         bool pressingTowardRight = touchingRight && moveInput > 0;
         isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
