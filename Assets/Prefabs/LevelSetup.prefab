@@ -48,8 +48,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88c17ae1f2d7c24db186f31ef5f8a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  healthBarImage: {fileID: 0}
-  healthSprites: []
+  healthBarImage: {fileID: 2680279300745217000}
+  healthSprites:
+  - {fileID: 3471379003345152339, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: 2031487359220254540, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: 3752185409300440955, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: -638982671043858005, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: -7517995804053507386, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: 4152859413466064236, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: -2612353761354144232, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: -1508473689568808773, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: -5839767518457091039, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: 5001618453096883488, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
+  - {fileID: 2972279397986282104, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
 --- !u!1 &1361164076977001932
 GameObject:
   m_ObjectHideFlags: 0
@@ -7953,7 +7964,6 @@ GameObject:
   - component: {fileID: 4218747223226216588}
   - component: {fileID: 82364864859027945}
   - component: {fileID: 2680279300745217000}
-  - component: {fileID: 7400067461704189288}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -8018,31 +8028,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7400067461704189288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6397243303808393261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88c17ae1f2d7c24db186f31ef5f8a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  healthBarImage: {fileID: 2680279300745217000}
-  healthSprites:
-  - {fileID: 2972279397986282104, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: 5001618453096883488, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: -5839767518457091039, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: -1508473689568808773, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: -2612353761354144232, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: 4152859413466064236, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: -7517995804053507386, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: -638982671043858005, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: 3752185409300440955, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: 2031487359220254540, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
-  - {fileID: 3471379003345152339, guid: 55d81e6165f9da54598f7600dd72f9d7, type: 3}
 --- !u!1 &6545273961985363054
 GameObject:
   m_ObjectHideFlags: 0
@@ -8252,7 +8237,7 @@ Transform:
   m_GameObject: {fileID: 7499930633198158067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 19.95, z: -5}
+  m_LocalPosition: {x: -5.312038, y: -0.2869711, z: -5}
   m_LocalScale: {x: 0.08104791, y: 0.08859245, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
