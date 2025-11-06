@@ -54,6 +54,7 @@ public class Playercontroller : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private bool isGrounded;
+    private bool isFalling;
     private bool isWallSliding;
     private bool isWallJumping;
     private bool hasJumped;
@@ -70,7 +71,7 @@ public class Playercontroller : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // ✅ Use explicitly assigned child components if set
+        //  Use explicitly assigned child components if set
         if (childAnimator != null && childSpriteRenderer != null)
         {
             anim = childAnimator;
@@ -248,7 +249,7 @@ public class Playercontroller : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
 
-        // ✅ Flip child sprite only — keeps collider position fixed
+        // Flip child sprite only — keeps collider position fixed
         if (spriteChild != null)
         {
             Vector3 scale = spriteChild.localScale;
@@ -258,7 +259,7 @@ public class Playercontroller : MonoBehaviour
         }
     }
 
-    // 🎞️ Animation handling
+    // Animation handling
     void UpdateAnimationStates()
     {
         if (anim == null) return;
@@ -267,11 +268,19 @@ public class Playercontroller : MonoBehaviour
         anim.SetFloat("Speed", horizontalSpeed);
         anim.SetBool("isGrounded", isGrounded);
 
-        if (!isGrounded && rb.linearVelocity.y > 0.1f)
-            anim.SetBool("isJumping", true);
-        else if (isGrounded)
-            anim.SetBool("isJumping", false);
+        // Jumping (going up)
+        bool isJumping = !isGrounded && rb.linearVelocity.y > 0.1f;
+        anim.SetBool("isJumping", isJumping);
+
+        // Falling (going down)
+        bool isFalling = !isGrounded && rb.linearVelocity.y < -0.1f;
+        anim.SetBool("isFalling", isFalling);
     }
+
+
+
+
+
 
     /// <summary>
     /// If the player is on a platform and presses jump holding down, then fall through the platform
