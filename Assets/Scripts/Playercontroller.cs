@@ -268,14 +268,26 @@ public class Playercontroller : MonoBehaviour
         anim.SetFloat("Speed", horizontalSpeed);
         anim.SetBool("isGrounded", isGrounded);
 
-        // Jumping (going up)
-        bool isJumping = !isGrounded && rb.linearVelocity.y > 0.1f;
-        anim.SetBool("isJumping", isJumping);
-
-        // Falling (going down)
-        bool isFalling = !isGrounded && rb.linearVelocity.y < -0.1f;
-        anim.SetBool("isFalling", isFalling);
+        // Jumping up
+        if (!isGrounded && rb.linearVelocity.y > 0.1f)
+        {
+            anim.SetBool("isJumping", true);
+            anim.SetBool("isFalling", false);
+        }
+        // Falling down
+        else if (!isGrounded && rb.linearVelocity.y < -0.1f)
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFalling", true);
+        }
+        // On the ground
+        else if (isGrounded)
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFalling", false);
+        }
     }
+
 
 
 
