@@ -289,11 +289,6 @@ public class Playercontroller : MonoBehaviour
     }
 
 
-
-
-
-
-
     /// <summary>
     /// If the player is on a platform and presses jump holding down, then fall through the platform
     /// </summary>
