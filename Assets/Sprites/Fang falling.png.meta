@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: c4ddd07559a63734e81a23b7f85eb0af
+guid: 51375e0cebf527448b495e1e336a66a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7743200637973465612
-    second: Fang Walking Right Before In Between_0
+      213: -3020696794705248735
+    second: Fang falling_0
   - first:
-      213: -1728755074633288327
-    second: Fang Walking Right Before In Between_1
+      213: -6241891857566620670
+    second: Fang falling_1
   - first:
-      213: -4441663826237885612
-    second: Fang Walking Right Before In Between_2
+      213: -2828205805591678511
+    second: Fang falling_2
+  - first:
+      213: -7375080647037088391
+    second: Fang falling_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -119,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fang Walking Right Before In Between_0
+      name: Fang falling_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 32
-        width: 755
-        height: 1392
+        x: 141
+        y: 99
+        width: 977
+        height: 1449
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +137,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f573058b00aa8490800000000000000
-      internalID: -7743200637973465612
+      spriteID: 12ebe6105445416d0800000000000000
+      internalID: -3020696794705248735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fang Walking Right Before In Between_1
+      name: Fang falling_1
       rect:
         serializedVersion: 2
-        x: 471
-        y: 1421
+        x: 1157
+        y: 1432
+        width: 9
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 204a65f2d685069a0800000000000000
+      internalID: -6241891857566620670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fang falling_2
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 92
+        width: 25
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d1b206edc130c8d0800000000000000
+      internalID: -2828205805591678511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fang falling_3
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 89
         width: 7
-        height: 7
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,30 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97534d04b6a3208e0800000000000000
-      internalID: -1728755074633288327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fang Walking Right Before In Between_2
-      rect:
-        serializedVersion: 2
-        x: 932
-        y: 1320
-        width: 8
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4537361784a0c52c0800000000000000
-      internalID: -4441663826237885612
+      spriteID: 97d0f73f93376a990800000000000000
+      internalID: -7375080647037088391
       vertices: []
       indices: 
       edges: []
@@ -198,9 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fang Walking Right Before In Between_0: -7743200637973465612
-      Fang Walking Right Before In Between_1: -1728755074633288327
-      Fang Walking Right Before In Between_2: -4441663826237885612
+      Fang falling_0: -3020696794705248735
+      Fang falling_1: -6241891857566620670
+      Fang falling_2: -2828205805591678511
+      Fang falling_3: -7375080647037088391
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

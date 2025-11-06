@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 8cea039097480e4479070b2e8198b113
+guid: eecbdc6d4ca29354dac3cbdcedbb7491
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6075603221016571739
-    second: Fang Still_0
+      213: 1241669904059220452
+    second: Fang New Right Fully..._imresizer_0
   - first:
-      213: -2893627837660844113
-    second: Fang Still_1
+      213: 825561435331087202
+    second: Fang New Right Fully..._imresizer_1
   - first:
-      213: -4342421600794255013
-    second: Fang Still_2
+      213: -6596857059703085425
+    second: Fang New Right Fully..._imresizer_2
+  - first:
+      213: -5372171791357744725
+    second: Fang New Right Fully..._imresizer_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fang Still_0
+      name: Fang New Right Fully..._imresizer_0
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1542
-        width: 7
-        height: 6
+        x: 126
+        y: 0
+        width: 1011
+        height: 1527
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5f69e880f0e05450800000000000000
-      internalID: 6075603221016571739
+      spriteID: 4e14eb7f23c4b3110800000000000000
+      internalID: 1241669904059220452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fang Still_1
+      name: Fang New Right Fully..._imresizer_1
       rect:
         serializedVersion: 2
-        x: 141
-        y: 8
-        width: 833
-        height: 1530
+        x: 637
+        y: 1524
+        width: 8
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: faf2b0010d4c7d7d0800000000000000
-      internalID: -2893627837660844113
+      spriteID: 26bcb2d50cbf47b00800000000000000
+      internalID: 825561435331087202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fang Still_2
+      name: Fang New Right Fully..._imresizer_2
       rect:
         serializedVersion: 2
-        x: 1157
-        y: 1433
-        width: 9
-        height: 43
+        x: 1156
+        y: 1431
+        width: 10
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +181,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b51ecabaf8e9cb3c0800000000000000
-      internalID: -4342421600794255013
+      spriteID: f86ae52b4714374a0800000000000000
+      internalID: -6596857059703085425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fang New Right Fully..._imresizer_3
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 1411
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba96fbff7363275b0800000000000000
+      internalID: -5372171791357744725
       vertices: []
       indices: 
       edges: []
@@ -198,9 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fang Still_0: 6075603221016571739
-      Fang Still_1: -2893627837660844113
-      Fang Still_2: -4342421600794255013
+      Fang New Right Fully..._imresizer_0: 1241669904059220452
+      Fang New Right Fully..._imresizer_1: 825561435331087202
+      Fang New Right Fully..._imresizer_2: -6596857059703085425
+      Fang New Right Fully..._imresizer_3: -5372171791357744725
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

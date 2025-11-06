@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 8cea039097480e4479070b2e8198b113
+guid: b44336caceb62a4498b14d92bf5375fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6075603221016571739
-    second: Fang Still_0
+      213: -3350903094062103348
+    second: Fang pre jumping_0
   - first:
-      213: -2893627837660844113
-    second: Fang Still_1
-  - first:
-      213: -4342421600794255013
-    second: Fang Still_2
+      213: 1418290837702346538
+    second: Fang pre jumping_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,12 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fang Still_0
+      name: Fang pre jumping_0
       rect:
         serializedVersion: 2
-        x: 640
+        x: 641
         y: 1542
-        width: 7
+        width: 6
         height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -134,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5f69e880f0e05450800000000000000
-      internalID: 6075603221016571739
+      spriteID: cc4cba9c3633f71d0800000000000000
+      internalID: -3350903094062103348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fang Still_1
+      name: Fang pre jumping_1
       rect:
         serializedVersion: 2
         x: 141
-        y: 8
-        width: 833
-        height: 1530
+        y: 80
+        width: 1025
+        height: 1458
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,30 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: faf2b0010d4c7d7d0800000000000000
-      internalID: -2893627837660844113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fang Still_2
-      rect:
-        serializedVersion: 2
-        x: 1157
-        y: 1433
-        width: 9
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b51ecabaf8e9cb3c0800000000000000
-      internalID: -4342421600794255013
+      spriteID: a278071a008cea310800000000000000
+      internalID: 1418290837702346538
       vertices: []
       indices: 
       edges: []
@@ -198,9 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fang Still_0: 6075603221016571739
-      Fang Still_1: -2893627837660844113
-      Fang Still_2: -4342421600794255013
+      Fang pre jumping_0: -3350903094062103348
+      Fang pre jumping_1: 1418290837702346538
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

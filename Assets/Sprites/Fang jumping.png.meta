@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 8cea039097480e4479070b2e8198b113
+guid: c9c75d778945bf04badf3c928316e72c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6075603221016571739
-    second: Fang Still_0
+      213: 827526917454549255
+    second: Fang jumping_0
   - first:
-      213: -2893627837660844113
-    second: Fang Still_1
+      213: 6846988685330658974
+    second: Fang jumping_1
   - first:
-      213: -4342421600794255013
-    second: Fang Still_2
+      213: -1260882966893886093
+    second: Fang jumping_2
+  - first:
+      213: -5214218610411231622
+    second: Fang jumping_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,35 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fang Still_0
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 1542
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5f69e880f0e05450800000000000000
-      internalID: 6075603221016571739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fang Still_1
+      name: Fang jumping_0
       rect:
         serializedVersion: 2
         x: 141
-        y: 8
-        width: 833
-        height: 1530
+        y: 100
+        width: 1021
+        height: 1448
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: faf2b0010d4c7d7d0800000000000000
-      internalID: -2893627837660844113
+      spriteID: 701d3f4d857fb7b00800000000000000
+      internalID: 827526917454549255
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fang Still_2
+      name: Fang jumping_1
       rect:
         serializedVersion: 2
-        x: 1157
-        y: 1433
-        width: 9
-        height: 43
+        x: 1159
+        y: 1448
+        width: 7
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +159,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b51ecabaf8e9cb3c0800000000000000
-      internalID: -4342421600794255013
+      spriteID: e96b042bee3650f50800000000000000
+      internalID: 6846988685330658974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fang jumping_2
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 92
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37503fe3f91708ee0800000000000000
+      internalID: -1260882966893886093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fang jumping_3
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 89
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a762539cccf53a7b0800000000000000
+      internalID: -5214218610411231622
       vertices: []
       indices: 
       edges: []
@@ -198,9 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fang Still_0: 6075603221016571739
-      Fang Still_1: -2893627837660844113
-      Fang Still_2: -4342421600794255013
+      Fang jumping_0: 827526917454549255
+      Fang jumping_1: 6846988685330658974
+      Fang jumping_2: -1260882966893886093
+      Fang jumping_3: -5214218610411231622
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 922e6982fdfd4eb48bc091c09db21f47
+guid: 159789efb12575944a9f6d989fb24089
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2233514065134935929
-    second: Fang Walking Right_0
+      213: 7325816751806382170
+    second: Fang New Right After Still_0
   - first:
-      213: -1987195940045220372
-    second: Fang Walking Right_1
+      213: -3134904307267611760
+    second: Fang New Right After Still_1
+  - first:
+      213: 8613078913683275927
+    second: Fang New Right After Still_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fang Walking Right_0
+      name: Fang New Right After Still_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 57
-        width: 944
-        height: 1466
+        x: 686
+        y: 1542
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7802bca9ac6f001e0800000000000000
-      internalID: -2233514065134935929
+      spriteID: a50860d95878aa560800000000000000
+      internalID: 7325816751806382170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fang Walking Right_1
+      name: Fang New Right After Still_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1520
-        width: 7
-        height: 7
+        x: 186
+        y: 10
+        width: 834
+        height: 1528
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +156,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce5918632df0c64e0800000000000000
-      internalID: -1987195940045220372
+      spriteID: 093d87854259e74d0800000000000000
+      internalID: -3134904307267611760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fang New Right After Still_2
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 1435
+        width: 8
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 790cf7053adc78770800000000000000
+      internalID: 8613078913683275927
       vertices: []
       indices: 
       edges: []
@@ -173,8 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fang Walking Right_0: -2233514065134935929
-      Fang Walking Right_1: -1987195940045220372
+      Fang New Right After Still_0: 7325816751806382170
+      Fang New Right After Still_1: -3134904307267611760
+      Fang New Right After Still_2: 8613078913683275927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
