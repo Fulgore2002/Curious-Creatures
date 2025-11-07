@@ -1572,6 +1572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSetup
       objectReference: {fileID: 0}
+    - target: {fileID: 5372818368818855425, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.23
+      objectReference: {fileID: 0}
     - target: {fileID: 6342629179625680507, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_TileColorArray.Array.size
       value: 1
