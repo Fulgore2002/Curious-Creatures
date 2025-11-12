@@ -48,6 +48,9 @@ public class Playercontroller : MonoBehaviour
     public Animator childAnimator;
     public SpriteRenderer childSpriteRenderer;
 
+    [Header("Game Objects")]
+    public GameObject player;
+
     // --- Private ---
     private Rigidbody2D rb;
     private Animator anim;
@@ -95,7 +98,7 @@ public class Playercontroller : MonoBehaviour
         tileActions = new Dictionary<TileBase, Action>();
         foreach (TileBase thorn in thornsTiles)
         {
-            tileActions[thorn] = () => Health(1, false);
+            tileActions[thorn] = () => EditHealth(1, false);
         }
     }
 
@@ -103,13 +106,23 @@ public class Playercontroller : MonoBehaviour
     {
         MovementController();
         UpdateAnimationStates();
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Health(1, true);
-        }
-
         DetectTile();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.name.Replace("(Clone)", "").Trim())
+        {
+            case null:
+                break;
+            case "Bandage":
+                ItemController.Activate(ItemController.type.Heal, player);
+                break;
+            case "MKit":
+                ItemController.Activate(ItemController.type.MaxHeal, player);
+                break;
+        }
+        Destroy(collision.gameObject);
     }
 
     void ResetWallJump() => isWallJumping = false;
@@ -154,7 +167,7 @@ public class Playercontroller : MonoBehaviour
         }
     }
 
-    void Health(int amount, bool Heal)
+    public void EditHealth(int amount, bool Heal)
     {
         if (Heal) health += amount;
         else health -= amount;
