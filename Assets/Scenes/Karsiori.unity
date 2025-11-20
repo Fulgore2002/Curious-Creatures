@@ -683,7 +683,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094737188}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -5065,7 +5065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7440466723165265573, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_Size.x
-      value: 12.9
+      value: 12.89
       objectReference: {fileID: 0}
     - target: {fileID: 7440466723165265573, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_Size.y
@@ -5074,7 +5074,7 @@ PrefabInstance:
     - target: {fileID: 7440466723165265573, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8cea039097480e4479070b2e8198b113, type: 3}
+      objectReference: {fileID: 21300000, guid: 3c214f2dbf858134797c88c5629d688b, type: 3}
     - target: {fileID: 7440466723165265573, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
