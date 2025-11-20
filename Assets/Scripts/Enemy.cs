@@ -2,33 +2,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Follow Settings")]
     public float moveSpeed = 2f;
-    private Transform player;
-
-    [Header("Player Detection")]
-    [Tooltip("Tag used to identify the player")]
     public string playerTag = "Player";
+
+    private Transform player;
+    private float attackCooldown = 0.2f; // how often enemy *tries* to damage
+    private float nextAttackTime = 0f;
 
     void Start()
     {
-        // --- FIND PLAYER ---
-        GameObject p = GameObject.FindGameObjectWithTag(playerTag);
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+            rb.freezeRotation = true;
 
+        GameObject p = GameObject.FindGameObjectWithTag(playerTag);
         if (p != null)
-        {
             player = p.transform;
-            Debug.Log("[Enemy] Player found! Following.");
-        }
-        else
-        {
-            Debug.LogWarning("[Enemy] Player not found! Make sure the player is tagged 'Player'.");
-        }
     }
 
     void Update()
     {
-        // --- FOLLOW PLAYER ---
         if (player == null) return;
 
         transform.position = Vector2.MoveTowards(
@@ -40,32 +33,34 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"[Enemy] TriggerEnter: {gameObject.name} collided with {other.gameObject.name}");
+        if (!other.CompareTag(playerTag)) return;
 
-        // Only react to player
-        if (!other.CompareTag(playerTag))
-        {
-            Debug.Log($"[Enemy] Ignored {other.gameObject.name}, wrong tag.");
-            return;
-        }
-
-        // Try to grab PlayerFlash component from different locations
-        PlayerFlash pf = other.GetComponent<PlayerFlash>();
-
-        if (pf == null && other.transform.parent != null)
-            pf = other.transform.parent.GetComponent<PlayerFlash>();
-
-        if (pf == null)
-            pf = other.GetComponentInChildren<PlayerFlash>();
+        PlayerFlash pf = other.GetComponentInParent<PlayerFlash>();
 
         if (pf != null)
+            TryDamage(pf);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (!other.CompareTag(playerTag)) return;
+
+        PlayerFlash pf = other.GetComponentInParent<PlayerFlash>();
+
+        if (pf != null)
+            TryDamage(pf);
+    }
+
+    void TryDamage(PlayerFlash pf)
+    {
+        // PLAYER IS INVINCIBLE — LET THEM PASS THROUGH
+        if (pf.isInvincible)
+            return;
+
+        if (Time.time >= nextAttackTime)
         {
-            Debug.Log($"[Enemy] Found PlayerFlash on {pf.gameObject.name} — FlashNow()");
             pf.FlashNow();
-        }
-        else
-        {
-            Debug.LogWarning($"[Enemy] No PlayerFlash found on {other.gameObject.name} or parents/children.");
+            nextAttackTime = Time.time + attackCooldown;
         }
     }
 }

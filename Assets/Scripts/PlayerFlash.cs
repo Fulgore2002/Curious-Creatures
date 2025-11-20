@@ -1,56 +1,61 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class PlayerFlash : MonoBehaviour
 {
-    [Tooltip("Optional: assign manually if SpriteRenderer is not on this GameObject")]
     public SpriteRenderer spriteRenderer;
 
     public Color flashColor = Color.white;
-    public float flashDuration = 0.2f;
+    public float flashDuration = 0.15f;
+    public float invincibleTime = 3f;
 
     private Color originalColor;
-    private bool isFlashing = false;
+    public bool isInvincible = false;
+
+    private int enemyLayer;
+    private int playerLayer;
 
     void Start()
     {
-        // If not assigned, search this GameObject and children (handles animated children)
         if (spriteRenderer == null)
-        {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        }
 
-        if (spriteRenderer == null)
-        {
-            Debug.LogWarning($"[PlayerFlash] No SpriteRenderer found on player or children of '{gameObject.name}'. Flash will not work until one is assigned.");
-        }
-        else
-        {
+        if (spriteRenderer != null)
             originalColor = spriteRenderer.color;
-        }
+
+        enemyLayer = LayerMask.NameToLayer("Enemy");
+        playerLayer = LayerMask.NameToLayer("Player");
     }
 
-    // Public method other objects can call
     public void FlashNow()
     {
-        if (spriteRenderer == null)
-        {
-            Debug.LogWarning($"[PlayerFlash] Flash requested but SpriteRenderer is null on '{gameObject.name}'.");
-            return;
-        }
-
-        if (!isFlashing)
-        {
-            StartCoroutine(FlashCoroutine());
-        }
+        if (!isInvincible)
+            StartCoroutine(InvincibleCoroutine());
     }
 
-    private IEnumerator FlashCoroutine()
+    private IEnumerator InvincibleCoroutine()
     {
-        isFlashing = true;
-        spriteRenderer.color = flashColor;
-        yield return new WaitForSeconds(flashDuration);
+        isInvincible = true;
+
+        // Disable collision between player and enemies
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
+
+        float endTime = Time.time + invincibleTime;
+
+        // FLASH repeatedly during invincibility
+        while (Time.time < endTime)
+        {
+            spriteRenderer.color = flashColor;
+            yield return new WaitForSeconds(flashDuration);
+
+            spriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(flashDuration);
+        }
+
+        // Restore
         spriteRenderer.color = originalColor;
-        isFlashing = false;
+        Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
+
+        isInvincible = false;
     }
 }
