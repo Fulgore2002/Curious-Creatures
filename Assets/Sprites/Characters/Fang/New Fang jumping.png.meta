@@ -17,15 +17,6 @@ TextureImporter:
   - first:
       213: 8250134431518615442
     second: New Fang jumping_4
-  - first:
-      213: 6019431792944542198
-    second: New Fang jumping_5
-  - first:
-      213: 3718701177876935624
-    second: New Fang jumping_6
-  - first:
-      213: 2091009405650171844
-    second: New Fang jumping_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -67,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -124,10 +115,10 @@ TextureImporter:
       name: New Fang jumping_0
       rect:
         serializedVersion: 2
-        x: 1244
-        y: 2993
-        width: 10
-        height: 7
+        x: 141
+        y: 98
+        width: 1018
+        height: 1450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +137,10 @@ TextureImporter:
       name: New Fang jumping_1
       rect:
         serializedVersion: 2
-        x: 1276
-        y: 2971
-        width: 82
-        height: 28
+        x: 1158
+        y: 1447
+        width: 8
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +159,10 @@ TextureImporter:
       name: New Fang jumping_2
       rect:
         serializedVersion: 2
-        x: 1411
-        y: 2934
-        width: 11
-        height: 9
+        x: 1155
+        y: 1431
+        width: 6
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +181,10 @@ TextureImporter:
       name: New Fang jumping_3
       rect:
         serializedVersion: 2
-        x: 249
-        y: 189
-        width: 1996
-        height: 2725
+        x: 342
+        y: 92
+        width: 24
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +203,10 @@ TextureImporter:
       name: New Fang jumping_4
       rect:
         serializedVersion: 2
-        x: 2245
-        y: 2805
-        width: 14
-        height: 63
+        x: 427
+        y: 89
+        width: 7
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,77 +221,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: New Fang jumping_5
-      rect:
-        serializedVersion: 2
-        x: 2241
-        y: 2769
-        width: 10
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f1f628c251598350800000000000000
-      internalID: 6019431792944542198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang jumping_6
-      rect:
-        serializedVersion: 2
-        x: 662
-        y: 175
-        width: 47
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8c37e2dc40b7b9330800000000000000
-      internalID: 3718701177876935624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang jumping_7
-      rect:
-        serializedVersion: 2
-        x: 829
-        y: 173
-        width: 12
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4c777cdc9f1c40d10800000000000000
-      internalID: 2091009405650171844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -315,9 +240,6 @@ TextureImporter:
       New Fang jumping_2: -7613949651582579587
       New Fang jumping_3: 6233963693724125105
       New Fang jumping_4: 8250134431518615442
-      New Fang jumping_5: 6019431792944542198
-      New Fang jumping_6: 3718701177876935624
-      New Fang jumping_7: 2091009405650171844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

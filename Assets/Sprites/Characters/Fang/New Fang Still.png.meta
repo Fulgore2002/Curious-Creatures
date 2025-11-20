@@ -14,15 +14,6 @@ TextureImporter:
   - first:
       213: 6465679757952711186
     second: New Fang Still_3
-  - first:
-      213: 5592938069468102900
-    second: New Fang Still_4
-  - first:
-      213: -7445357995467818165
-    second: New Fang Still_5
-  - first:
-      213: -8858801544319652856
-    second: New Fang Still_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,10 +112,10 @@ TextureImporter:
       name: New Fang Still_0
       rect:
         serializedVersion: 2
-        x: 347
-        y: 26
-        width: 1589
-        height: 2939
+        x: 684
+        y: 1528
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,10 +134,10 @@ TextureImporter:
       name: New Fang Still_1
       rect:
         serializedVersion: 2
-        x: 1328
-        y: 2961
-        width: 13
-        height: 13
+        x: 192
+        y: 12
+        width: 823
+        height: 1512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +156,10 @@ TextureImporter:
       name: New Fang Still_2
       rect:
         serializedVersion: 2
-        x: 2322
-        y: 2780
-        width: 13
-        height: 63
+        x: 1197
+        y: 1434
+        width: 8
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +178,10 @@ TextureImporter:
       name: New Fang Still_3
       rect:
         serializedVersion: 2
-        x: 2317
-        y: 2745
-        width: 10
-        height: 19
+        x: 1195
+        y: 1416
+        width: 6
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,77 +196,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: New Fang Still_4
-      rect:
-        serializedVersion: 2
-        x: 1954
-        y: 2474
-        width: 15
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4f0c761aa8b1e9d40800000000000000
-      internalID: 5592938069468102900
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang Still_5
-      rect:
-        serializedVersion: 2
-        x: 1959
-        y: 2427
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b4bb68ea956cca890800000000000000
-      internalID: -7445357995467818165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang Still_6
-      rect:
-        serializedVersion: 2
-        x: 373
-        y: 1608
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 80c252f6ee63f0580800000000000000
-      internalID: -8858801544319652856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -289,9 +214,6 @@ TextureImporter:
       New Fang Still_1: 554728383907818405
       New Fang Still_2: -7924412588685710556
       New Fang Still_3: 6465679757952711186
-      New Fang Still_4: 5592938069468102900
-      New Fang Still_5: -7445357995467818165
-      New Fang Still_6: -8858801544319652856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,15 +11,6 @@ TextureImporter:
   - first:
       213: 3146012335306848775
     second: New Fang Walking Left In Between_2
-  - first:
-      213: 4043593063445355646
-    second: New Fang Walking Left In Between_3
-  - first:
-      213: 1723817081248087059
-    second: New Fang Walking Left In Between_4
-  - first:
-      213: 7146559353289198875
-    second: New Fang Walking Left In Between_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -118,10 +109,10 @@ TextureImporter:
       name: New Fang Walking Left In Between_0
       rect:
         serializedVersion: 2
-        x: 245
-        y: 18
-        width: 1606
-        height: 2956
+        x: 637
+        y: 1532
+        width: 7
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +131,10 @@ TextureImporter:
       name: New Fang Walking Left In Between_1
       rect:
         serializedVersion: 2
-        x: 1235
-        y: 2969
-        width: 14
-        height: 13
+        x: 139
+        y: 8
+        width: 833
+        height: 1521
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +153,10 @@ TextureImporter:
       name: New Fang Walking Left In Between_2
       rect:
         serializedVersion: 2
-        x: 2242
-        y: 2792
-        width: 14
-        height: 62
+        x: 1154
+        y: 1423
+        width: 10
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,77 +171,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: New Fang Walking Left In Between_3
-      rect:
-        serializedVersion: 2
-        x: 2238
-        y: 2757
-        width: 9
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e7cd4e2a77abd1830800000000000000
-      internalID: 4043593063445355646
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang Walking Left In Between_4
-      rect:
-        serializedVersion: 2
-        x: 1869
-        y: 2491
-        width: 15
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31cfa81908a3ce710800000000000000
-      internalID: 1723817081248087059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang Walking Left In Between_5
-      rect:
-        serializedVersion: 2
-        x: 1875
-        y: 2445
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b1d4c032eddad2360800000000000000
-      internalID: 7146559353289198875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -263,9 +188,6 @@ TextureImporter:
       New Fang Walking Left In Between_0: 681154379272836558
       New Fang Walking Left In Between_1: -2691056228764405826
       New Fang Walking Left In Between_2: 3146012335306848775
-      New Fang Walking Left In Between_3: 4043593063445355646
-      New Fang Walking Left In Between_4: 1723817081248087059
-      New Fang Walking Left In Between_5: 7146559353289198875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

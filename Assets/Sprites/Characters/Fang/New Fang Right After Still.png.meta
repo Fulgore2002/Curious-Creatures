@@ -11,18 +11,6 @@ TextureImporter:
   - first:
       213: -2304596927683784807
     second: New Fang Right After Still_2
-  - first:
-      213: 5853341564578989562
-    second: New Fang Right After Still_3
-  - first:
-      213: 550166698050486300
-    second: New Fang Right After Still_4
-  - first:
-      213: -202357881908301267
-    second: New Fang Right After Still_5
-  - first:
-      213: -6199003355083113226
-    second: New Fang Right After Still_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,10 +109,10 @@ TextureImporter:
       name: New Fang Right After Still_0
       rect:
         serializedVersion: 2
-        x: 336
-        y: 21
-        width: 1608
-        height: 2971
+        x: 684
+        y: 1542
+        width: 8
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,10 +131,10 @@ TextureImporter:
       name: New Fang Right After Still_1
       rect:
         serializedVersion: 2
-        x: 1328
-        y: 2988
-        width: 13
-        height: 12
+        x: 186
+        y: 10
+        width: 833
+        height: 1528
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +153,10 @@ TextureImporter:
       name: New Fang Right After Still_2
       rect:
         serializedVersion: 2
-        x: 2334
-        y: 2809
-        width: 14
-        height: 61
+        x: 1201
+        y: 1431
+        width: 10
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,99 +171,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: New Fang Right After Still_3
-      rect:
-        serializedVersion: 2
-        x: 2330
-        y: 2773
-        width: 9
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: af582c1042f3b3150800000000000000
-      internalID: 5853341564578989562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang Right After Still_4
-      rect:
-        serializedVersion: 2
-        x: 1961
-        y: 2502
-        width: 14
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c108c8c62b592a700800000000000000
-      internalID: 550166698050486300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang Right After Still_5
-      rect:
-        serializedVersion: 2
-        x: 1967
-        y: 2457
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d22fa5b1494113df0800000000000000
-      internalID: -202357881908301267
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: New Fang Right After Still_6
-      rect:
-        serializedVersion: 2
-        x: 362
-        y: 1642
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6fcf0d2da47b8f9a0800000000000000
-      internalID: -6199003355083113226
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -288,10 +188,6 @@ TextureImporter:
       New Fang Right After Still_0: -3019422730952707200
       New Fang Right After Still_1: -158534982893353162
       New Fang Right After Still_2: -2304596927683784807
-      New Fang Right After Still_3: 5853341564578989562
-      New Fang Right After Still_4: 550166698050486300
-      New Fang Right After Still_5: -202357881908301267
-      New Fang Right After Still_6: -6199003355083113226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
