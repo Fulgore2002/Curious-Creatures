@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/CuriousCreatures-FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638980403812707004
+  lastModified: 638980410897834583
   FileSizes: []
   Exists: 1
 --- !u!114 &-4886385439623429886
@@ -60,7 +60,7 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/CuriousCreatures-FMOD/Build/Desktop/CC.bank
   Name: CC
   StudioPath: bank:/CC
-  lastModified: 638980403812813312
+  lastModified: 638980410897824492
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -87,7 +87,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 5849201461939387438}
   cacheVersion: 131856
-  cacheTime: 638980403812813312
+  cacheTime: 638980410897844566
   SerializableEventsDict:
   - key: event:/Temp
     index: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/CuriousCreatures-FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638980403812732131
+  lastModified: 638980410897844566
   FileSizes:
   - Name: 
     Value: 810
