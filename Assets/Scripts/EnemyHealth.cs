@@ -10,11 +10,9 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int dmg)
     {
-        currentHealth -= amount;
-
-        Debug.Log("[Enemy] Took damage! Health: " + currentHealth);
+        currentHealth -= dmg;
 
         if (currentHealth <= 0)
             Die();
@@ -22,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        // play animation later
         Destroy(gameObject);
     }
 }

@@ -2,72 +2,55 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [Header("Attack Settings")]
-    public float attackRange = 1f;
-    public int attackDamage = 1;
-    public float attackCooldown = 0.4f;
+    [Header("Attack")]
+    public Transform attackPoint;
+    public float attackRadius = 0.5f;
+    public LayerMask enemyLayer;
+    public float attackCooldown = 0.3f;
 
     [Header("Knockback")]
-    public float knockbackForce = 8f;
+    public float knockbackForce = 6f;
 
-    [Header("References")]
-    public Transform attackPoint;
-    public LayerMask enemyLayers;
-
-    private float nextAttackTime;
-    private Animator anim;
-
-    void Start()
-    {
-        anim = GetComponentInChildren<Animator>();
-    }
+    private float nextAttackTime = 0f;
 
     void Update()
     {
-        // Keyboard (G) OR Controller (X)
-        if ((Input.GetKeyDown(KeyCode.G) || Input.GetButtonDown("Fire1"))
-            && Time.time >= nextAttackTime)
+        // Keyboard G OR Controller X
+        bool attackPressed =
+            Input.GetKeyDown(KeyCode.G) ||
+            Input.GetButtonDown("Fire1"); // X button by default
+
+        if (attackPressed && Time.time >= nextAttackTime)
         {
             Attack();
+            nextAttackTime = Time.time + attackCooldown;
         }
     }
 
     void Attack()
     {
-        nextAttackTime = Time.time + attackCooldown;
-
-        if (anim != null)
-            anim.SetTrigger("Attack");
-
         // Detect enemies
         Collider2D[] hits = Physics2D.OverlapCircleAll(
             attackPoint.position,
-            attackRange,
-            enemyLayers
+            attackRadius,
+            enemyLayer
         );
 
-        foreach (Collider2D enemy in hits)
+        foreach (Collider2D hit in hits)
         {
-            EnemyHealth eh = enemy.GetComponent<EnemyHealth>();
-            Rigidbody2D er = enemy.GetComponent<Rigidbody2D>();
-
-            if (eh != null)
-                eh.TakeDamage(attackDamage);
-
-            // Knockback
-            if (er != null)
+            Enemy enemy = hit.GetComponentInParent<Enemy>();
+            if (enemy != null)
             {
-                Vector2 dir = (enemy.transform.position - transform.position).normalized;
-                er.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
+                enemy.TakeHit(transform.position, knockbackForce);
             }
         }
     }
 
-    // Visualize attack range in editor
+    // Visualize hitbox
     void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }
