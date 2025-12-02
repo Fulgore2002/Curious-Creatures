@@ -3,11 +3,18 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    public enum Type
+    {
+        Ant,
+        Lizard
+    }
+
     [Header("Movement")]
     public float moveSpeed = 2f;
     public string playerTag = "Player";
 
     [Header("Attack")]
+    public GameObject hitCheck;
     private float attackCooldown = 0.2f;
     private float nextAttackTime = 0f;
 
@@ -18,11 +25,18 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private bool isStunned = false;
 
+    [Header("Other")]
+    private Type NMEtype = Type.Ant;
+    public float Health;
+    private SpriteRenderer sprites;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         rb.gravityScale = 2f; // ✅ gravity stays on
+
+        sprites = GetComponent<SpriteRenderer>();
 
         GameObject p = GameObject.FindGameObjectWithTag(playerTag);
         if (p != null)
@@ -41,6 +55,8 @@ public class Enemy : MonoBehaviour
             dir * moveSpeed,
             rb.linearVelocity.y
         );
+
+        Anims();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -93,5 +109,17 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(hitStunTime);
 
         isStunned = false;
+    }
+
+    public void Anims()
+    {
+        if(rb.linearVelocityX < 0)
+        {
+            sprites.flipX = true;
+        }
+        else
+        {
+            sprites.flipX = false;
+        }
     }
 }
