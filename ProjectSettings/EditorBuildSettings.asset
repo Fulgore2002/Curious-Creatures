@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Karsiori_Stage2.unity
     guid: c5300574b7ea6e645b6815a60da4a90e
+  - enabled: 1
+    path: Assets/Scenes/Karsiori_Stage3.unity
+    guid: b8a8ef48c6097de45938585317afd928
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
