@@ -3925,6 +3925,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3144128425989436, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1103742433}
     - target: {fileID: 16007901927134658, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 3
@@ -21539,7 +21543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1564211870920267774, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1703823662111562271, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_Layer
@@ -21608,6 +21612,10 @@ PrefabInstance:
     - target: {fileID: 2722739697207017652, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633395188693365222, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.3351016
       objectReference: {fileID: 0}
     - target: {fileID: 4770918120604374812, guid: b147a8ff8c7458b4d913ac4c26bcdf99, type: 3}
       propertyPath: m_LocalPosition.x
