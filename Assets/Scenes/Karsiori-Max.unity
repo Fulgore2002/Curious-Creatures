@@ -41653,11 +41653,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: contactDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 965784433}
   m_SourcePrefab: {fileID: 100100000, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+--- !u!1 &965784432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+  m_PrefabInstance: {fileID: 965784431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &965784433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965784432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
 --- !u!1 &1136185293
 GameObject:
   m_ObjectHideFlags: 0
@@ -42277,8 +42306,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1585943003883922116, guid: ee7b71e14b16cec4f87c2668b0fe4f60, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8401839334295616291}
   m_SourcePrefab: {fileID: 100100000, guid: ee7b71e14b16cec4f87c2668b0fe4f60, type: 3}
+--- !u!1 &8401839334295616290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1585943003883922116, guid: ee7b71e14b16cec4f87c2668b0fe4f60, type: 3}
+  m_PrefabInstance: {fileID: 8401839334295616289}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8401839334295616291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8401839334295616290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
