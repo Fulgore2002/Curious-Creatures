@@ -299,6 +299,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &73212514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+  m_PrefabInstance: {fileID: 1664403519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &73212521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73212514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
+--- !u!1 &115064787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+  m_PrefabInstance: {fileID: 1987559778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &115064794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115064787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
 --- !u!1 &178428499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,10 +2421,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: contactDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 73212521}
   m_SourcePrefab: {fileID: 100100000, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
 --- !u!1 &1667629098
 GameObject:
@@ -2983,7 +3030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
+  maxHealth: 2
 --- !u!1 &1880951987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,10 +3443,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: contactDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 115064794}
   m_SourcePrefab: {fileID: 100100000, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
 --- !u!213 &2001317564
 Sprite:
@@ -3907,6 +3965,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4856962277505242728, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
       propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: contactDamage
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

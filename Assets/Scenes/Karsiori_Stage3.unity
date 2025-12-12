@@ -171,11 +171,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy-Lizard (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: contactDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 176203614}
   m_SourcePrefab: {fileID: 100100000, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+--- !u!1 &176203613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+  m_PrefabInstance: {fileID: 176203612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &176203614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176203613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
 --- !u!1 &285941796
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,11 +409,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy-Lizard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: contactDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 664031574}
   m_SourcePrefab: {fileID: 100100000, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+--- !u!1 &664031573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+  m_PrefabInstance: {fileID: 664031572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &664031574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664031573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
 --- !u!1 &710411868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2317e05f3ecb2db409989c7f2a4680a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFlash
+  playerHealth: 10
+  maxHealth: 10
   spriteRenderer: {fileID: 1873291588}
   flashColor: {r: 1, g: 0.0056602955, b: 0.0056602955, a: 1}
   flashDuration: 0.2
@@ -6008,11 +6068,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy-Lizard
       objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570805829065263517, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      propertyPath: contactDamage
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1728791984}
   m_SourcePrefab: {fileID: 100100000, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+--- !u!1 &1728791983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4832141604125347020, guid: c318507dd93da5349be7cef0c4b9d32c, type: 3}
+  m_PrefabInstance: {fileID: 1728791982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1728791984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728791983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a815935e8a9cf4882a5a5179eee636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
 --- !u!1 &1873291585
 GameObject:
   m_ObjectHideFlags: 0

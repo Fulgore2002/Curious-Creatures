@@ -1,53 +1,40 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public enum Type
-    {
-        Ant,
-        Lizard
-    }
+    [Header("Enemy Stats")]
+    public int maxHealth = 1;          // Set: Ant = 1, Lizard = 2
+    public int contactDamage = 1;      // Will match maxHealth automatically
+    private int currentHealth;
 
     [Header("Movement")]
     public float moveSpeed = 2f;
     public string playerTag = "Player";
 
-    [Header("Attack")]
-    public GameObject hitCheck;
+    private Transform player;
     private float attackCooldown = 0.2f;
     private float nextAttackTime = 0f;
 
-    [Header("Knockback")]
-    public float hitStunTime = 0.25f;
-
-    private Transform player;
     private Rigidbody2D rb;
-    private bool isStunned = false;
-
-    [Header("Other")]
-    private Type NMEtype = Type.Ant;
-    public float Health;
-    private SpriteRenderer sprites;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
-        rb.gravityScale = 2f; // ✅ gravity stays on
 
-        sprites = GetComponent<SpriteRenderer>();
+        // Assign health + contact damage
+        currentHealth = maxHealth;
+        contactDamage = maxHealth;   // IMPORTANT → damage equals health
 
+        // Find the player
         GameObject p = GameObject.FindGameObjectWithTag(playerTag);
         if (p != null)
             player = p.transform;
-        else
-            Debug.LogWarning("[Enemy] Player not found!");
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (player == null || isStunned) return;
+        if (player == null) return;
 
         float dir = Mathf.Sign(player.position.x - rb.position.x);
 
@@ -55,11 +42,22 @@ public class Enemy : MonoBehaviour
             dir * moveSpeed,
             rb.linearVelocity.y
         );
-
-        Anims();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // ----------------------------------------------------------
+    // ENEMY TAKES DAMAGE FROM PLAYER ATTACK
+    // ----------------------------------------------------------
+    public void ApplyKnockback(Vector2 force)
+    {
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag(playerTag)) return;
 
@@ -68,7 +66,7 @@ public class Enemy : MonoBehaviour
             TryDamage(pf);
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag(playerTag)) return;
 
@@ -79,47 +77,13 @@ public class Enemy : MonoBehaviour
 
     void TryDamage(PlayerFlash pf)
     {
-        if (pf.isInvincible) return;
+        if (pf.isInvincible)
+            return;
 
         if (Time.time >= nextAttackTime)
         {
-            pf.FlashNow();
+            pf.TakeDamage(contactDamage);
             nextAttackTime = Time.time + attackCooldown;
-        }
-    }
-
-    // ✅ CALLED BY PlayerAttack
-    public void TakeHit(Vector2 attackerPos, float force)
-    {
-        if (isStunned) return;
-
-        Vector2 knockDir = ((Vector2)transform.position - attackerPos).normalized;
-
-        StopAllCoroutines();
-        StartCoroutine(HitStun(knockDir * force));
-    }
-
-    IEnumerator HitStun(Vector2 knockback)
-    {
-        isStunned = true;
-
-        rb.linearVelocity = Vector2.zero; // reset
-        rb.AddForce(new Vector2(knockback.x, 2f), ForceMode2D.Impulse);
-
-        yield return new WaitForSeconds(hitStunTime);
-
-        isStunned = false;
-    }
-
-    public void Anims()
-    {
-        if(rb.linearVelocityX < 0)
-        {
-            sprites.flipX = true;
-        }
-        else
-        {
-            sprites.flipX = false;
         }
     }
 }

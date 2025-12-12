@@ -2,23 +2,19 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [Header("Attack")]
     public Transform attackPoint;
     public float attackRadius = 0.5f;
     public LayerMask enemyLayer;
     public float attackCooldown = 0.3f;
-
-    [Header("Knockback")]
     public float knockbackForce = 6f;
+    public int attackDamage = 1;
 
-    private float nextAttackTime = 0f;
+    float nextAttackTime = 0f;
 
     void Update()
     {
-        // Keyboard G OR Controller X
-        bool attackPressed =
-            Input.GetKeyDown(KeyCode.G) ||
-            Input.GetButtonDown("Fire1"); // X button by default
+        bool attackPressed = Input.GetKeyDown(KeyCode.G) ||
+                             Input.GetButtonDown("Fire1");
 
         if (attackPressed && Time.time >= nextAttackTime)
         {
@@ -29,7 +25,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        // Detect enemies
         Collider2D[] hits = Physics2D.OverlapCircleAll(
             attackPoint.position,
             attackRadius,
@@ -39,14 +34,23 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             Enemy enemy = hit.GetComponentInParent<Enemy>();
+            EnemyHealth health = hit.GetComponentInParent<EnemyHealth>();
+
             if (enemy != null)
             {
-                enemy.TakeHit(transform.position, knockbackForce);
+                // Knockback
+                Vector2 knockDir = (enemy.transform.position - transform.position).normalized;
+                enemy.ApplyKnockback(knockDir * knockbackForce);
+            }
+
+            if (health != null)
+            {
+                // Always 1 damage
+                health.TakeDamage(1);
             }
         }
     }
 
-    // Visualize hitbox
     void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
