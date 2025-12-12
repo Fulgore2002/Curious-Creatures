@@ -1754,9 +1754,10 @@ MonoBehaviour:
   attackRadius: 0.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   attackCooldown: 0.3
   knockbackForce: 8
+  attackDamage: 1
 --- !u!1 &1136185293
 GameObject:
   m_ObjectHideFlags: 0
