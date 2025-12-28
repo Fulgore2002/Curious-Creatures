@@ -61,6 +61,8 @@ public class Playercontroller : MonoBehaviour
     private bool isWallSliding;
     private bool isWallJumping;
     private bool hasJumped;
+    private bool touchingLeft;
+    private bool touchingRight;
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
     private int lastWallDir = 0;
@@ -148,6 +150,9 @@ public class Playercontroller : MonoBehaviour
         return grounded;
     }
 
+    /// <summary>
+    /// Learn the tile type under the player and determine if they should take damage.
+    /// </summary>
     private void DetectTile()
     {
         if (interactionTilemaps[0] == null) return;
@@ -197,12 +202,8 @@ public class Playercontroller : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        // --- Wall Check ---
-        bool touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, collisionLayers[0]);
-        bool touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, collisionLayers[0]);
-        bool pressingTowardLeft = touchingLeft && moveInput < 0;
-        bool pressingTowardRight = touchingRight && moveInput > 0;
-        isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
+        WallCheck();
+        
 
         // --- Jump Buffer ---
         if (jumpPressed) jumpBufferCounter = jumpBufferTime;
@@ -217,43 +218,10 @@ public class Playercontroller : MonoBehaviour
             rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
         }
 
-        // --- Wall Slide ---
-        if (isWallSliding)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -wallSlideSpeed));
-        }
-
         // --- Jump ---
         if (jumpBufferCounter > 0f)
         {
-            // Wall Jump
-            if (isWallSliding)
-            {
-                int wallDir = touchingLeft ? -1 : (touchingRight ? 1 : 0);
-                if (wallDir != lastWallDir)
-                {
-                    rb.linearVelocity = new Vector2(-wallDir * wallJumpForceX, wallJumpForceY);
-                    isWallJumping = true;
-                    hasJumped = true;
-                    lastWallDir = wallDir;
-                    jumpBufferCounter = 0f;
-                    Invoke(nameof(ResetWallJump), wallJumpDuration);
-                }
-            }
-            else if (Physics2D.OverlapCircle(groundCheck.position, checkRadius, collisionLayers[1]) && downInput < 0)
-            {
-                Debug.Log("Falling!");
-                DropThruPlatform();
-            }
-            // Ground Jump
-            else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                hasJumped = true;
-                coyoteTimeCounter = 0f;
-                jumpBufferCounter = 0f;
-            }
+            Jump();
         }
 
         // --- Variable Jump Height ---
@@ -319,5 +287,57 @@ public class Playercontroller : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         action?.Invoke();
+    }
+
+    /// <summary>
+    /// Check for wall collision and have the player slide down if needed.
+    /// </summary>
+    void WallCheck()
+    {
+        touchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, checkRadius, collisionLayers[0]);
+        touchingRight = Physics2D.OverlapCircle(wallCheckRight.position, checkRadius, collisionLayers[0]);
+        bool pressingTowardLeft = touchingLeft && moveInput < 0;
+        bool pressingTowardRight = touchingRight && moveInput > 0;
+        isWallSliding = (pressingTowardLeft || pressingTowardRight) && !isGrounded && rb.linearVelocity.y < 0;
+
+        if (isWallSliding)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -wallSlideSpeed));
+        }
+    }
+
+    /// <summary>
+    /// Determine the correct jump action and perform accordingly.
+    /// </summary>
+    void Jump()
+    {
+        // Wall Jump
+        if (isWallSliding)
+        {
+            int wallDir = touchingLeft ? -1 : (touchingRight ? 1 : 0);
+            if (wallDir != lastWallDir)
+            {
+                rb.linearVelocity = new Vector2(-wallDir * wallJumpForceX, wallJumpForceY);
+                isWallJumping = true;
+                hasJumped = true;
+                lastWallDir = wallDir;
+                jumpBufferCounter = 0f;
+                Invoke(nameof(ResetWallJump), wallJumpDuration);
+            }
+        }
+        // Drop Through Platform
+        else if (Physics2D.OverlapCircle(groundCheck.position, checkRadius, collisionLayers[1]) && downInput < 0)
+        {
+            DropThruPlatform();
+        }
+        // Ground Jump
+        else if ((isGrounded || coyoteTimeCounter > 0f) && !hasJumped)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            hasJumped = true;
+            coyoteTimeCounter = 0f;
+            jumpBufferCounter = 0f;
+        }
     }
 }
